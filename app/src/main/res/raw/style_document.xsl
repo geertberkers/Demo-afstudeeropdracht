@@ -2124,7 +2124,7 @@
                 <xsl:text>care provision</xsl:text>
             </xsl:when>
             <xsl:when test=" $clsCode = 'PROC' ">
-                <xsl:text>procedure</xsl:text>
+                <xsl:text>problem</xsl:text>
             </xsl:when>
             <xsl:when test=" $clsCode = 'REG' ">
                 <xsl:text>registration</xsl:text>

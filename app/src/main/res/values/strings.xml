@@ -10,13 +10,14 @@
     <string name="note">Note</string>
     <string name="cda_content">Inhoud CDA Document</string>
     <string name="phoneNumber">Telefoon:</string>
+    <string name="allergen">Allergie</string>
 
     <string-array name="cda_content">
         <item>Allergieën</item>
         <item>Medicatie</item>
         <item>Problemen</item>
         <item>Verrichtingen</item>
-        <item>Resultaten</item>
+        <item>Labuitslagen</item>
     </string-array>
 
 </resources>

@@ -57,8 +57,7 @@ public class PersonalInfo {
     }
 
     private void setPhoneNumber(HL7PatientRole patientRole){
-        phoneNumber = patientRole.getTelecoms().get(0).getValue();
-
+        phoneNumber = patientRole.getTelecoms().get(0).getValue().replace("tel:", "");
     }
 
     public String getName() {

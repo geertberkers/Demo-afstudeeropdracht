@@ -1,4 +1,4 @@
-package nl.zorgkluis.demo.afstudeeropdracht.Layout;
+package nl.zorgkluis.demo.afstudeeropdracht.ViewPager;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;

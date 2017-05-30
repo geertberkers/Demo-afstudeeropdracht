@@ -38,7 +38,7 @@ public class CDAFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.cda_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_cda, container, false);
         webView = (WebView) rootView.findViewById(R.id.webView);
 
         showCDADocument();
