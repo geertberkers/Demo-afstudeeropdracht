@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Demo CDA Document</string>
+    <string name="document_title">Document title</string>
+    <string name="personal_info">Persoonlijke gegevens</string>
+    <string name="address">Address:</string>
+    <string name="gender">Geslacht:</string>
+    <string name="birthday">Geboortedatum:</string>
+    <string name="name">Naam:</string>
+    <string name="note_title">Note title</string>
+    <string name="note">Note</string>
+    <string name="cda_content">Inhoud CDA Document</string>
+    <string name="phoneNumber">Telefoon:</string>
+
+    <string-array name="cda_content">
+        <item>Allergieën</item>
+        <item>Medicatie</item>
+        <item>Problemen</item>
+        <item>Verrichtingen</item>
+        <item>Resultaten</item>
+    </string-array>
+
+</resources>
