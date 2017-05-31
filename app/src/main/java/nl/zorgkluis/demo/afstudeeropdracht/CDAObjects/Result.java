@@ -17,7 +17,7 @@ public class Result {
         this.tableList = new ArrayList<>();
     }
     public String getCaption() {
-        return caption.replace(" - ", "\n");
+        return caption.replace(" - ", "\n").replace(") (", ")\n(");
     }
 
     public void setCaption(String caption) {

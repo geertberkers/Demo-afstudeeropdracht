@@ -10,6 +10,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         android:orientation="vertical"
         android:paddingEnd="8dp"
         android:paddingStart="8dp">
@@ -40,29 +41,29 @@
             android:layout_marginStart="10dp" />
 
         <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Resultaten:"
+        android:textColor="@color/black" />
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Uitslag:"
-            android:textColor="@color/black" />
+            android:padding="10dp">
 
-        <TableLayout
-            android:id="@+id/table1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TableLayout
+                android:id="@+id/table1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Getest:"
-            android:textColor="@color/black" />
-
-        <TableLayout
-            android:id="@+id/table2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TableLayout
+                android:id="@+id/table2"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
 </FrameLayout>

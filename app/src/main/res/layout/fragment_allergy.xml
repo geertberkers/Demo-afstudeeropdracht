@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingEnd="8dp"
+        android:clickable="true"
         android:paddingStart="8dp">
 
         <TextView

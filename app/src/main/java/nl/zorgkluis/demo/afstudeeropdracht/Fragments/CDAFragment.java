@@ -29,11 +29,9 @@ public class CDAFragment extends Fragment {
 
     private static final String TAG = "CDAFragment";
 
-    private String title;
     private WebView webView;
 
     public CDAFragment() {
-        title = "CDA Document";
     }
 
     @Override
@@ -95,9 +93,5 @@ public class CDAFragment extends Fragment {
         }
 
         return html;
-    }
-
-    public String getTitle() {
-        return title;
     }
 }

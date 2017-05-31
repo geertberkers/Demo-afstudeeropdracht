@@ -40,7 +40,6 @@ import nl.zorgkluis.hl7.ClinicalDocumentArchitecture.Act.HL7Section;
 import nl.zorgkluis.hl7.ClinicalDocumentArchitecture.ActRelationship.HL7Component;
 import nl.zorgkluis.hl7.ClinicalDocumentArchitecture.ActRelationship.HL7Entry;
 import nl.zorgkluis.hl7.DataTypes.HL7CodedWithEquivalents;
-import nl.zorgkluis.hl7.StrucDoc.StrucDoc;
 import nl.zorgkluis.hl7.StrucDoc.StrucDocBr;
 import nl.zorgkluis.hl7.StrucDoc.StrucDocChoice;
 import nl.zorgkluis.hl7.StrucDoc.StrucDocContent;
@@ -68,11 +67,8 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
     private TextView txtAddress;
     private TextView txtPhoneNumber;
     
-    private String title;
     private String[] cdaContent;
     private HL7ClinicalDocument cdaDocument;
-
-    private int backStackNumber = 0;
 
     private List<Allergy> allergies;
     private List<Medication> medications;
@@ -89,7 +85,6 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
         this.problems = new ArrayList<>();
         this.procedures = new ArrayList<>();
         this.results = new ArrayList<>();
-        this.title = "Structured CDA Document";
     }
 
     @Override
@@ -189,17 +184,10 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
 
                 String firstPart = html;
                 String secondPart = (createHtml(html, choice.getContent().getContentList()));
+                String styleCode = choice.getContent().getStyleCode();
 
-                String styleCode = choice.getContent().getStyleCode().toUpperCase();
-                switch (styleCode) {
-                    case "BOLD":
-                        html = firstPart + "<b>" + secondPart + "</b>";
-                        break;
-                    case "xIndent":     //TODO: Figure out
-                        break;
-                    case "flagdata":    //TODO: Figure out
-                        break;
-                    default:    break;
+                if(styleCode.equalsIgnoreCase("bold")){
+                    html = firstPart + "<b>" + secondPart + "</b>";
                 }
             }
 
@@ -238,7 +226,8 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
 
                             if(contentId.contains("allergen")){
                                 String allergen = content.getContentItem(0).getStringValue();
-                                allergy.setAllergen(allergen);                            }
+                                allergy.setAllergen(allergen);
+                            }
 
                             if(contentId.contains("reaction")){
                                 String reaction = content.getContentItem(0).getStringValue();
@@ -301,8 +290,8 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
                             String contentId = content.getId();
 
                             if(contentId == null){
-                                String actief = content.getContentItem(0).getStringValue();
-                                medication.setStatus(actief);
+                                String status = content.getContentItem(0).getStringValue();
+                                medication.setStatus(status);
                             } else
                             if(contentId.contains("med")){
                                 String name = content.getContentItem(0).getStringValue();
@@ -329,8 +318,6 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
     private void createProblems(HL7Component component) {
         List<HL7Act> acts = getEntryValues(component.getSection());
         System.out.println("Problem: " + acts.size());
-        //TODO: Fill list of problems
-
 
         StrucDocText text = component.getSection().getText();
         for(StrucDocChoice s : text.getContent()){
@@ -415,26 +402,10 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
 
                     for (StrucDocChoice choice : item.getItems()) {
                         if (choice.getChoice() instanceof StrucDocTable) {
-
                             result.addTable((StrucDocTable)choice.getChoice());
                         }
-//                            StrucDocContent content = choice.getContent();
-//
-//                            String contentId = content.getId();
-//
-//                            if(contentId.contains("name")){
-//                                String probleem = content.getContentItem(0).getStringValue();
-//                                procedure.setName(probleem);
-//                            }
-//                        }
-//
-//                        if(choice.getChoice() instanceof StrucDocString){
-//                            String status = ((StrucDocString) choice.getChoice()).getValue();
-//                            procedure.setStatus(status);
-//                        }
-//                    }
-                        results.add(result);
                     }
+                    results.add(result);
                 }
             }
         }
@@ -504,7 +475,7 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
     private void openResultaten() {
         ListFragment fragment = new ListFragment();
         fragment.setList(results);
-        fragment.setTitle("Resultaten");
+        fragment.setTitle("Labuitslagen");
         openFragment(fragment);
     }
 
@@ -543,9 +514,4 @@ public class StructuredCDAFragment extends RootFragment implements AdapterView.O
 
         return text.toString();
     }
-
-    public String getTitle() {
-        return title;
-    }
-
 }
